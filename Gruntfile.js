@@ -323,7 +323,7 @@ module.exports = function (grunt) {
       },
       e2e: {
         configFile: 'karma-e2e.conf.js',
-        singleRun: true,
+        singleRun: false,
         proxies: { '/': 'http://localhost:9001/' }
       }
     }
