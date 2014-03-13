@@ -18,8 +18,6 @@ angular
 	           
 	            account.getData().then(function(response) {
 		            $scope.accounts = response.data.accounts;
-		            $scope.creditCards = response.data.creditCards;
-		            $scope.userData = response.data.user;
 	            });
 
 	            // TODO change language directive

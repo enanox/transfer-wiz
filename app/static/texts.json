@@ -29,7 +29,11 @@
 	"transfer": {
 		"selectAccount": {"en": "Select origin account", "es": "Seleccione cuenta de origen"},
 		"knownAccounts": {"en": "Select destination account (from recents)", "es": "Seleccione cuenta de destino (recientes)"},
-		"orNewAccount": {"en": "Or type other account", "es": "O escriba otra cuenta"}
+		"orNewAccount": {"en": "Or type other account", "es": "O escriba otra cuenta"},
+		"enterAmount": {"en": "Enter the amount to transfer", "es": "Ingrese el monto a transferir"},
+		"amountValue": {"en": "Amount", "es": "Monto"},
+		"amountMail": {"en": "e-mail (will receive confirmation)", "es": "e-Mail (recibirá confirmación)"},
+		"amountComments": {"en": "Comments", "es": "Comentarios"}
 	},
 	"errorMessages": {
 		"selectAccount": {
@@ -39,6 +43,10 @@
 		"invalidAccount": {
 			"en": "Invalid account number",
 			"es": "Número de cuenta inválido"
+		},
+		"mandatoryFields": {
+			"en": "Some fields marked with (*) have not been fulfilled",
+			"es": "Algunos campos marcados con (*) no han sido completados"
 		}
 	}
 }

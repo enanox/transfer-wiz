@@ -13,12 +13,10 @@
 			<span id="userName">{{userData.name}}</span>
 		</div>
 		<div>			
-			<address>
-				<span>{{userData.address.join(', ')}}</span>
-			</address>			
-		</div>
-		<div>
-			<span>{{texts.bankOffice[language]}}</span>: <span id="userOffice">{{userData.office}}</span>
+			<span>{{userData.address.join(', ')}}</span>
+			<div class="help-block">
+				<span>{{texts.bankOffice[language]}}</span>: <span id="userOffice">{{userData.office}}</span>
+			</div>
 		</div>
 	</section>
 	<section>
@@ -60,13 +58,13 @@
 		</div>
 		<div class="row">		
 			<div class="col-md-4">
-				<a class="btn btn-default btn-block" href="#/transfer/origin">{{texts.controlPanelButtons.transfer[language]}}</a>
+				<a class="btn btn-default btn-xs btn-block" href="#/transfer/origin">{{texts.controlPanelButtons.transfer[language]}}</a>
 			</div>
 			<div class="col-md-4">
-				<a class="btn btn-default btn-block">{{texts.controlPanelButtons.services[language]}}</a>
+				<a class="btn btn-default btn-xs btn-block">{{texts.controlPanelButtons.services[language]}}</a>
 			</div>
 			<div class="col-md-4">
-				<a class="btn btn-default btn-block">{{texts.controlPanelButtons.accounts[language]}}</a>
+				<a class="btn btn-default btn-xs btn-block">{{texts.controlPanelButtons.accounts[language]}}</a>
 			</div>
 		</div>
 	</section>

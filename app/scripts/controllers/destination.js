@@ -50,7 +50,7 @@ angular
 	            });
 	            $scope.$on('languageChange', function(a) {
 		            console.log('change!', a)
-	            })
+	            });
 
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
@@ -129,8 +129,8 @@ angular
 
 			            $location.path('/transfer/amount/' + newToken);
 		            } else {
-		            	$scope.error = true;
-		            	$scope.errorMessage = $scope.texts.errorMessages.selectAccount[$scope.language];
+			            $scope.error = true;
+			            $scope.errorMessage = $scope.texts.errorMessages.selectAccount[$scope.language];
 		            }
 	            };
             } ]);

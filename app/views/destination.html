@@ -31,19 +31,19 @@
 			<div class="col-md-12">
 			<form data-ng-model="newAccount">
 				<label for="number">{{texts.transfer.orNewAccount[language]}}: </label>
-				<input type="text" data-ng-model="newAccount.number"/>
-				<input type="button" class="btn btn-primary" value="{{texts.controlPanelButtons.add[language]}}" data-ng-click="addAccount(newAccount)">
+				<input type="text" id="number" data-ng-model="newAccount.number"/>
+				<input type="button" class="btn btn-success btn-sm" value="{{texts.controlPanelButtons.add[language]}}" data-ng-click="addAccount(newAccount)">
 			</form>
 			</div>
 		</div>
 	</section>
 	<section>
 		<div class="row">		
-			<div class="col-md-6">
-				<a class="btn btn-default btn-block" href="#/transfer">{{texts.controlPanelButtons.cancel[language]}}</a>
+			<div class="col-md-6 text-right">
+				<a class="btn btn-warning btn-sm" href="#/transfer/origin">{{texts.controlPanelButtons.cancel[language]}}</a>
 			</div>
-			<div class="col-md-6">
-				<a class="btn btn-default btn-block" data-ng-click="enterAmount()">{{texts.controlPanelButtons.next[language]}}</a>
+			<div class="col-md-6 text-left">
+				<a class="btn btn-primary btn-sm" data-ng-click="enterAmount()">{{texts.controlPanelButtons.next[language]}}</a>
 			</div>
 		</div>
 	</section>

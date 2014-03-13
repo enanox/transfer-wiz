@@ -9,8 +9,9 @@ angular.module('transferWizApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        /*templateUrl: 'views/main.html',
+        controller: 'MainCtrl'*/
+      	redirectTo: '/transfer'
       })
       .when('/transfer', {
         templateUrl: 'views/transfer.html',
@@ -32,7 +33,11 @@ angular.module('transferWizApp', [
         templateUrl: 'views/success.html',
         controller: 'SuccessCtrl'
       })
+      .when('/transfer/confirm/:token', {
+        templateUrl: 'views/confirm.html',
+        controller: 'ConfirmCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/transfer'
       });
   });
