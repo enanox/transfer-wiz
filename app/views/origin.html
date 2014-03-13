@@ -19,7 +19,7 @@
 					<td></td>
 					<td data-ng-repeat="headers in texts.accountOverview.columns">{{headers[language]}}</td>
 				</tr>
-				<tr data-ng-repeat="account in accounts">
+				<tr class="accounts" data-ng-repeat="account in accounts">
 					<td><input type="radio" name="accounts" id="{{'accounts' + $index}}" data-ng-click="selectAccount(account.number)"></td>
 					<td>{{account.number}}</td>
 					<td>{{account.type}}</td>
@@ -32,10 +32,10 @@
 	<section>
 		<div class="row">		
 			<div class="col-md-6 text-right">
-				<a class="btn btn-warning btn-sm" href="#/transfer">{{texts.controlPanelButtons.cancel[language]}}</a>
+				<a class="btn btn-warning btn-sm" id="cancel" href="#/transfer">{{texts.controlPanelButtons.cancel[language]}}</a>
 			</div>
 			<div class="col-md-6 text-left">
-				<a class="btn btn-primary btn-sm" data-ng-click="startTransfer()">{{texts.controlPanelButtons.next[language]}}</a>
+				<a class="btn btn-primary btn-sm" id="next" data-ng-click="startTransfer()">{{texts.controlPanelButtons.next[language]}}</a>
 			</div>
 		</div>
 	</section>

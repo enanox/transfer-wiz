@@ -24,13 +24,13 @@
 		</div>
 		<div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 		<div>
-			<form class="form-horizontal" data-ng-submit="confirmTransfer()" data-ng-model="amount">
+			<form class="form-horizontal" data-ng-submit="confirmTransfer()" data-ng-model="amount" name="amount">
 				<div class="form-group">
 					<label for="value" class="col-sm-5 control-label">{{texts.transfer.amountValue[language]}}
 						(*)</label>
 					<div class="col-sm-7">
 						<input type="number" class="form-control" required="required"
-							data-ng-model="amount.value" />
+							data-ng-model="amount.value" id="value" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -38,22 +38,22 @@
 						(*)</label>
 					<div class="col-sm-7">
 						<input type="email" class="form-control" required="required"
-							data-ng-model="amount.email" />
+							data-ng-model="amount.email" id="email"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="value" class="col-sm-5 control-label">{{texts.transfer.amountComments[language]}}</label>
 					<div class="col-sm-7">
-						<textarea class="form-control" data-ng-model="amount.comments"></textarea>
+						<textarea class="form-control" data-ng-model="amount.comments" id="comments"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6 text-right">
 						<input type="button" class="btn btn-warning btn-sm"
-							data-ng-click="cancelAmount()" value="{{texts.controlPanelButtons.cancel[language]}}">
+							data-ng-click="cancelAmount()" id="cancel" value="{{texts.controlPanelButtons.cancel[language]}}">
 					</div>
 					<div class="col-md-6 text-left">
-						<input type="submit" class="btn btn-primary btn-sm" value="{{texts.controlPanelButtons.next[language]}}">
+						<input type="submit" id="next" class="btn btn-primary btn-sm" value="{{texts.controlPanelButtons.next[language]}}">
 					</div>
 				</div>
 			</form>
