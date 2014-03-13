@@ -36,5 +36,22 @@
 		"type": "MASTER",
 		"available": "877.54",
 		"currency": "USD"
+	}],
+	"knownDestinationAccounts": [{
+		"number": "0030 4411 123 4567890",
+		"type": "CC",
+		"currency": "UYU"
+	},{
+		"number": "0030 3300 123 4567890",
+		"type": "CC",
+		"currency": "UYU"
+	},{
+		"number": "0030 2299 123 4567890",
+		"type": "CC",
+		"currency": "UYU"
+	},{
+		"number": "0030 1188 123 4567890",
+		"type": "CC",
+		"currency": "UYU"
 	}]
 }

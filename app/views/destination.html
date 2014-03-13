@@ -1,1 +1,54 @@
-<p>This is the destination view.</p>
+<header>
+	<div class="pull-right">
+		<button class="btn btn-default btn-xs">EN</button>
+		<button class="btn btn-default btn-xs active">ES</button>
+	</div>
+	<div><h1>{{texts.bankName[language]}}</h1></div>
+	<div><h2><small>{{texts.bankDescription[language]}}</small></h2></div>	
+</header>
+<article>
+	<section>
+		<aside><h3>{{texts.accountOverview.title[language]}}</h3></aside>
+		<div>
+			<h3><small>{{texts.transfer.knownAccounts[language]}}</small></h3>
+		</div>
+		<div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+		<div>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td></td>
+					<td data-ng-repeat="headers in texts.knownAccountsOverview.columns">{{headers[language]}}</td>
+				</tr>
+				<tr data-ng-repeat="account in knownDestinationAccounts">
+					<td><input type="radio" name="accounts" id="{{'accounts' + $index}}" data-ng-click="selectAccount(account.number)"></td>
+					<td>{{account.number}}</td>
+					<td>{{account.type}}</td>
+					<td>{{account.currency}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row help-block">
+			<div class="col-md-12">
+			<form data-ng-model="newAccount">
+				<label for="number">{{texts.transfer.orNewAccount[language]}}: </label>
+				<input type="text" data-ng-model="newAccount.number"/>
+				<input type="button" class="btn btn-primary" value="{{texts.controlPanelButtons.add[language]}}" data-ng-click="addAccount(newAccount)">
+			</form>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">		
+			<div class="col-md-6">
+				<a class="btn btn-default btn-block" href="#/transfer">{{texts.controlPanelButtons.cancel[language]}}</a>
+			</div>
+			<div class="col-md-6">
+				<a class="btn btn-default btn-block" data-ng-click="enterAmount()">{{texts.controlPanelButtons.next[language]}}</a>
+			</div>
+		</div>
+	</section>
+</article>
+<footer>
+</footer>
+
+

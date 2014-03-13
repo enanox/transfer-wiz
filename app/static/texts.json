@@ -19,12 +19,26 @@
 		"back": {"en": "Back", "es": "Volver"},
 		"cancel": {"en": "Cancel", "es": "Cancelar"},
 		"next": {"en": "Next", "es": "Siguiente"},
-		"confirm": {"en": "Confirm", "es": "Confirm"}		
+		"confirm": {"en": "Confirm", "es": "Confirm"},
+		"add": {"en":"Add", "es": "Agregar"}
+	},
+	"knownAccountsOverview": {
+		"title": { "en": "Accounts overview", "es": "Cuentas"},
+		"columns": [{ "en": "Number", "es": "Número"}, {"en": "Type", "es": "Tipo"}, {"en": "Currency", "es": "Moneda"}]		
+		},
+	"transfer": {
+		"selectAccount": {"en": "Select origin account", "es": "Seleccione cuenta de origen"},
+		"knownAccounts": {"en": "Select destination account (from recents)", "es": "Seleccione cuenta de destino (recientes)"},
+		"orNewAccount": {"en": "Or type other account", "es": "O escriba otra cuenta"}
 	},
 	"errorMessages": {
 		"selectAccount": {
 			"en": "You have to select an account before proceeding",
 			"es": "Debe seleccionar una cuenta para continuar"
+		},
+		"invalidAccount": {
+			"en": "Invalid account number",
+			"es": "Número de cuenta inválido"
 		}
 	}
 }

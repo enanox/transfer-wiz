@@ -20,15 +20,15 @@ angular.module('transferWizApp', [
         templateUrl: 'views/origin.html',
         controller: 'OriginCtrl'
       })
-      .when('/transfer/destination', {
+      .when('/transfer/destination/:token', {
         templateUrl: 'views/destination.html',
         controller: 'DestinationCtrl'
       })
-      .when('/transfer/amount', {
+      .when('/transfer/amount/:token', {
         templateUrl: 'views/amount.html',
         controller: 'AmountCtrl'
       })
-      .when('/transfer/success', {
+      .when('/transfer/success/:token', {
         templateUrl: 'views/success.html',
         controller: 'SuccessCtrl'
       })
