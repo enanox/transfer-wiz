@@ -1,0 +1,30 @@
+{
+	"bankName": { "en": "Transfer Wiz", "es": "Transfer Wiz" },
+	"bankDescription": { "en": "e-banking service", "es": "Servicio de e-banking" },
+	"bankOffice": {"en": "Office", "es": "Sucursal"},
+	"userOverview": {"en": "User overview", "es": "Vista general"},
+	"accountOverview": {
+		"title": { "en": "Accounts overview", "es": "Cuentas"},
+		"columns": [{ "en": "Number", "es": "Número"}, {"en": "Type", "es": "Tipo"}, {"en": "Currency", "es": "Moneda"}, {"en": "Available", "es": "Disponibles"}]		
+		},
+	"ccOverview": {
+		"title": { "en": "Credits Card overview", "es": "Tarjetas de crédito"},
+		"columns": [{ "en": "Number", "es": "Número"}, {"en": "Type", "es": "Tipo"}, {"en": "Available", "es": "Disponibles"}]		
+		},
+	"controlPanel": {"en": "Control panel", "es": "Panel de control"},
+	"controlPanelButtons": {
+		"transfer": {"en": "Transfer", "es": "Transferencia"},
+		"accounts": {"en": "Accounts", "es": "Cuentas"},
+		"services": {"en": "Services", "es": "Servicios"},
+		"back": {"en": "Back", "es": "Volver"},
+		"cancel": {"en": "Cancel", "es": "Cancelar"},
+		"next": {"en": "Next", "es": "Siguiente"},
+		"confirm": {"en": "Confirm", "es": "Confirm"}		
+	},
+	"errorMessages": {
+		"selectAccount": {
+			"en": "You have to select an account before proceeding",
+			"es": "Debe seleccionar una cuenta para continuar"
+		}
+	}
+}

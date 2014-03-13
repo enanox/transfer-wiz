@@ -1,0 +1,40 @@
+{
+	"user": {
+		"name": "Mathias Juan Rodriguez Martinez",
+		"address": ["Evergreen Terrace 742", "Springfield, Oregon", "USA"],
+		"office": "Montevideo, Av. 18 de Julio s/n"
+	},
+	"accounts": [{
+		"number": "0021 1122 1122334455",
+		"type": "CC",
+		"available": "14521.25",
+		"currency": "UYU"
+	},{
+		"number": "0021 1122 6677889900",
+		"type": "CC",
+		"available": "5632.55",
+		"currency": "USD"
+	},{
+		"number": "0021 1122 123 4567890",
+		"type": "CA",
+		"available": "224001.95",
+		"currency": "UYU"
+	},
+	{
+		"number": "0021 3344 098 7654321",
+		"type": "CA",
+		"available": "8754.63",
+		"currency": "USD"
+	}],
+	"creditCards": [{
+		"number": "1234 5678 9101 1123",
+		"type": "VISA",
+		"available": "470.52",
+		"currency": "USD"
+	},{
+		"number": "321 1019 8765 4321",
+		"type": "MASTER",
+		"available": "877.54",
+		"currency": "USD"
+	}]
+}
