@@ -25,8 +25,8 @@ angular
 		            console.log($scope.language, L10n.language);
 	            });
 	            $scope.$on('languageChange', function(a) {
-		            console.log('change!', a)
-	            })
+		            console.log('change!', a);
+	            });
 
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;

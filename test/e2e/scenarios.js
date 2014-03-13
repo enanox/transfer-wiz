@@ -93,8 +93,6 @@ describe("TransferWiz App", function() {
 	
 	describe("Transfer Step 1", function() {
 		
-		var step1Token = 'tw-key'+(new Date().getTime());
-		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/origin');
 		});
@@ -106,12 +104,16 @@ describe("TransferWiz App", function() {
 		});
 		
 		it('should navigate to Step 2 page after clicking on "Next" button', function() {
-			var firstAccount = element('input[name="accounts"]:first-child');
-			firstAccount.click();
+			var firstAccount = element('#accounts0');
+			firstAccount.select('true');
+			pause();
+			console.log(sessionStorage)
+			var originAccount = sessionStorage.key(sessionStorage.length - 1);
+			var token = originAccount.split('-')[1];
 			
-			element('#next').click();
-			console.log(sessionStorage);
-			expect(browser().location().path()).toBe('/transfer/destination/'+step1Token);
+			expect(originAccount).toBe('0021 1122 1122334455');
+			
+			expect(browser().location().path()).toBe('/transfer/destination/'+token);
 		});
 		
 		it('should go back to /transfer when clicking on cancel button', function() {
@@ -124,10 +126,13 @@ describe("TransferWiz App", function() {
 	
 	describe("Transfer Step 2", function() {
 		
-		var token = 'tw-key'+(new Date().getTime());
+		var token = '';
 		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/destination/'+token);
+			
+			var originAccount = sessionStorage.key(sessionStorage.length - 1);
+			token = originAccount.split('-')[1];
 		});
 	
 		it('should have selectable destination accounts', function() {
@@ -215,4 +220,39 @@ describe("TransferWiz App", function() {
 		
 	});
 	
+	describe("Full Step Transfer", function() {
+		beforeEach(function() {
+			
+		});
+		
+		it('should navigate to Step 1', function(){
+			browser().navigateTo('#/transfer');
+			
+			element('#transfer').click();
+			expect(browser().location().path()).toBe('/transfer/origin');
+		});
+		
+		it('should pick an account and navigate to Step 2', function() {
+			element('#accounts0').click();
+			element("#next").click();
+			
+			var originAccount = sessionStorage.key(sessionStorage.length - 1);
+			var token = originAccount.split('-')[1];
+			
+			expect(originAccount).toBe('0021 1122 1122334455');
+			expect(browser().location().path()).toBe('/transfer/destination/'+token);
+		});
+		
+		it('should pick a destination account and navigate to Step 3', function() {
+			
+		});
+		
+		it('should enter amount value, mail and comments and navigate to Step 4', function() {
+			
+		});
+		
+		it('should confirm the transfer and show success message', function() {
+			
+		});
+	});
 });
