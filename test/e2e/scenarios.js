@@ -115,26 +115,34 @@ describe("TransferWiz App", function() {
 
 			element('#next').click();
 			
-			var token = '', accountVal = '';
+			setTimeout(function() {
+				
+			
+			var token = '', accountVal = '', key = '';
 			
 			for(var i = sessionStorage.length; i > 0 ; i--) {
-				if(sessionStorage[sessionStorage.key(i)] !== undefined)  {
+				if(sessionStorage[sessionStorage.key(i)] !== undefined && sessionStorage[sessionStorage.key(i)] !== 'undefined')  {
 					var lk = sessionStorage.key(i).split('-');
+
 					if(lk[lk.length - 1] == 'origin')  {
 						token = lk[0]+'-'+lk[1];
+						key = lk.join('-');
 						accountVal = sessionStorage[sessionStorage.key(i)];
 					} 
 				}
 			}
 			
-			expect(accountVal).toBe('0021 1122 1122334455');			
+			browser().navigateTo('#/transfer/destination/'+token);
+
+			expect({value: accountVal}).toEqual('0021 1122 1122334455');
 			expect(browser().location().path()).toBe('/transfer/destination/'+token);
+			}, 1200);
 		});
 		
 		it('should go back to /transfer when clicking on cancel button', function() {
 			var cancelButton = element('#cancel');
 			cancelButton.click();
-
+			
 			expect(browser().location().path()).toBe('/transfer');
 		});
 	});
