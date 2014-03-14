@@ -121,7 +121,6 @@ describe("TransferWiz App", function() {
 				if(sessionStorage[sessionStorage.key(i)] !== undefined)  {
 					var lk = sessionStorage.key(i).split('-');
 					if(lk[lk.length - 1] == 'origin')  {
-						lastKeys = lk;
 						token = lk[0]+'-'+lk[1];
 						accountVal = sessionStorage[sessionStorage.key(i)];
 					} 
