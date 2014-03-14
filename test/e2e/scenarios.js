@@ -2,12 +2,18 @@
 
 describe("TransferWiz App", function() {
 	
-	beforeEach(function() {
-		browser().navigateTo('/');
-	});
-	
 	describe("Routes Test", function() {
 		var token = 'tw-key'+(new Date().getTime());
+		
+		beforeEach(function() {
+			browser().navigateTo('/');
+		});		
+		
+		/*afterEach(function() {
+			for(var i = 0; i < sessionStorage.length; i++)  {
+				sessionStorage.removeItem(sessionStorage.key(i));
+			}
+		});*/ 
 		
 		it('should jump to the /transfer path when the user access to / ', function() {
 			browser().navigateTo('#/');
@@ -64,7 +70,7 @@ describe("TransferWiz App", function() {
 		var authCtrl, scope;
 				
 		beforeEach(function() {
-			browser().navigateTo('#/transfer');			
+			browser().navigateTo('#/transfer');
 		});
 		
 		it('should have the user account logged', function() {
@@ -95,8 +101,9 @@ describe("TransferWiz App", function() {
 		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/origin');
+			console.log('STEP 1');			
 		});
-		
+				
 		it('should have selectable accounts to start the transfer', function() {
 			
 			expect(repeater('tr.accounts').count()).not().toBe(0);
@@ -104,15 +111,24 @@ describe("TransferWiz App", function() {
 		});
 		
 		it('should navigate to Step 2 page after clicking on "Next" button', function() {
-			var firstAccount = element('#accounts0');
-			firstAccount.select('true');
-			pause();
-			console.log(sessionStorage)
-			var originAccount = sessionStorage.key(sessionStorage.length - 1);
-			var token = originAccount.split('-')[1];
+			input('accountSelected.number').enter('0021 1122 1122334455');
+
+			element('#next').click();
 			
-			expect(originAccount).toBe('0021 1122 1122334455');
+			var token = '', accountVal = '';
 			
+			for(var i = sessionStorage.length; i > 0 ; i--) {
+				if(sessionStorage[sessionStorage.key(i)] !== undefined)  {
+					var lk = sessionStorage.key(i).split('-');
+					if(lk[lk.length - 1] == 'origin')  {
+						lastKeys = lk;
+						token = lk[0]+'-'+lk[1];
+						accountVal = sessionStorage[sessionStorage.key(i)];
+					} 
+				}
+			}
+			
+			expect(accountVal).toBe('0021 1122 1122334455');			
 			expect(browser().location().path()).toBe('/transfer/destination/'+token);
 		});
 		
@@ -129,10 +145,10 @@ describe("TransferWiz App", function() {
 		var token = '';
 		
 		beforeEach(function() {
-			browser().navigateTo('#/transfer/destination/'+token);
-			
 			var originAccount = sessionStorage.key(sessionStorage.length - 1);
-			token = originAccount.split('-')[1];
+			token = originAccount.split('-')[0]+'-'+originAccount.split('-')[1];
+			
+			browser().navigateTo('#/transfer/destination/'+token);
 		});
 	
 		it('should have selectable destination accounts', function() {
@@ -236,8 +252,9 @@ describe("TransferWiz App", function() {
 			element('#accounts0').click();
 			element("#next").click();
 			
-			var originAccount = sessionStorage.key(sessionStorage.length - 1);
-			var token = originAccount.split('-')[1];
+			var originAccountSaved = sessionStorage.key(sessionStorage.length - 1);
+			var token = originAccountSaved.split('-')[1];
+			var originAccount = sessionStorage.getItem(originAccountSaved);
 			
 			expect(originAccount).toBe('0021 1122 1122334455');
 			expect(browser().location().path()).toBe('/transfer/destination/'+token);

@@ -27,25 +27,26 @@ angular
 	            $scope.$on('languageChange', function(a) {
 		            console.log('change!', a);
 	            });
-
+	            
+	            $scope.accountSelected = { number: ''};
+	            $scope.$watch('accountSelected.number', function() {
+	            	if($scope.accountSelected.number)  {
+	            		$scope.error = false;
+			            $scope.errorMessage = '';
+	            	}
+	            });
+	            
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
 		            L10n.texts = texts;
 	            });
 
-	            $scope.selectAccount = function(acc) {
-		            $scope.accountSelected = acc;
-		            $scope.error = false;
-		            $scope.errorMessage = '';
-	            };
-
 	            $scope.startTransfer = function() {
-		            if ($scope.accountSelected) {
+		            if ($scope.accountSelected.number) {
 			            var timestamp = new Date().getTime();
 			            var token = 'twkey-' + timestamp;
 			            // TODO Better security method for saving the selected account
-			            sessionStorage[token+'-origin'] = $scope.accountSelected;
-			            
+			            sessionStorage[token+'-origin'] = $scope.accountSelected.number;
 			            $location.path('/transfer/destination/' + token);
 		            } else {
 			            $scope.error = !$scope.error;

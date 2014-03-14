@@ -39,6 +39,10 @@ angular
 			                + '-origin'];
 			            sessionStorage[newToken + '-destination'] = sessionStorage[oldToken
 			                + '-destination'];
+
+			            delete sessionStorage[oldToken + '-origin'];
+			            delete sessionStorage[oldToken + '-destination'];
+			            
 			            sessionStorage[newToken + '-amount'] = $scope.amount.value;
 			            sessionStorage[newToken + '-email'] = $scope.amount.email;
 			            sessionStorage[newToken + '-comments'] = $scope.amount.comments;

@@ -126,7 +126,7 @@ angular
 			            sessionStorage[newToken + '-origin'] = sessionStorage[oldToken
 			                + '-origin'];
 			            sessionStorage[newToken + '-destination'] = $scope.accountSelected;
-
+			            delete sessionStorage[oldToken+'-origin'];
 			            $location.path('/transfer/amount/' + newToken);
 		            } else {
 			            $scope.error = true;
