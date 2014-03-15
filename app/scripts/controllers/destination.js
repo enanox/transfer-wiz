@@ -64,13 +64,14 @@ angular
 	            };
 
 	            $scope.addAccount = function(newAccountFromModel) {
-		            if (newAccountFromModel.hasOwnProperty('number')
-		                && newAccountFromModel.number !== '') {
-			            var accNumber = newAccountFromModel.number;
+	            	if ($scope.newAccount.hasOwnProperty('number')
+		                && $scope.newAccount.number !== '') {
+			            var accNumber = $scope.newAccount.number;
 
 			            if ($scope.checkValidAccount(accNumber)) {
-				            $scope.setAccountFormat(newAccountFromModel);
-				            $scope.knownDestinationAccounts.push(newAccountFromModel);
+				            $scope.setAccountFormat($scope.newAccount);
+				            $scope.knownDestinationAccounts.push($scope.newAccount);
+				            $scope.newAccount = null;
 			            } else {
 				            $scope.error = true;
 				            $scope.errorMessage = $scope.texts.errorMessages.invalidAccount[$scope.language];

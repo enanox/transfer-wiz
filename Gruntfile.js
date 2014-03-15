@@ -76,7 +76,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          port: 9001,
+          port: 8080,
           base: [
             '.tmp',
             'test',
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
       e2e: {
         configFile: 'karma-e2e.conf.js',
         singleRun: false,
-        proxies: { '/': 'http://localhost:9001/' }
+        proxies: { '/': 'http://localhost:8081/' }
       }
     }
   });
