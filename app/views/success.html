@@ -23,7 +23,10 @@
 		<div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 		<div class="container" data-ng-hide="error">
 			<p>
-				{{ texts.successfulInfo.first[language]}}<span>{{transfer.amount | currency}}</span>{{texts.successfulInfo.second[language] }}<span>{{transfer.origin}}</span>.
+				{{ texts.successfulInfo.first[language]}} <strong>{{transfer.amount | currency}}</strong> {{texts.successfulInfo.second[language] }} <strong>{{transfer.origin}}</strong>.
+			</p>
+			<p>
+				<span class="help-block">{{texts.successfulInfo.third[language]}}</span>
 			</p>
 		</div>
 	</section>

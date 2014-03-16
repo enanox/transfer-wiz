@@ -43,7 +43,8 @@
 		},
 	"successfulInfo": {
 		"first": { "en": "The indicated amount of ", "es": "El monto indicado de "},
-		"second": { "en": "will be debited from the account ", "es": "será debitado de la cuenta "}
+		"second": { "en": "will be debited from the account ", "es": "será debitado de la cuenta "},
+		"third": {"en": "To perform another transaction, please go back to Home", "es": "Para realizar otra transacción, por favor vuelva al inicio."}
 		}, 
 	"errorMessages": {
 		"selectAccount": {
@@ -65,6 +66,10 @@
 		"transferFailed": {
 			"en": "Error in transfer. Please go back later and try again.",
 			"es": "Error en la transferencia. Por favor vuelva más tarde e inténtelo de nuevo"
+		},
+		"amountIsNan": {
+			"en": "Amount is not a number.",
+			"es": "El monto no es un número."
 		}
 	}
 }

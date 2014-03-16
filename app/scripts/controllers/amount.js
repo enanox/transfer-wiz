@@ -16,6 +16,7 @@ angular
 
 	            $scope.token = $routeParams.token;
 	            $scope.language = L10n.getLanguage();
+	            $scope.validAmountRegexp = /^\d+((\.|\,)\d+)?$/;
 
 	            account.getData().then(function(response) {
 		            $scope.accounts = response.data.accounts;
@@ -43,7 +44,7 @@ angular
 			            // Check available amount against account selected
 			            if ($scope.isAvailableAmount(originAccount)) {
 				            // TODO Better security method for saving the selected
-										// account
+				            // account
 				            sessionStorage[newToken + '-origin'] = sessionStorage[oldToken
 				                + '-origin'];
 				            sessionStorage[newToken + '-destination'] = sessionStorage[oldToken
@@ -58,8 +59,15 @@ angular
 
 				            $location.path('/transfer/confirm/' + newToken);
 			            } else {
-				            $scope.error = true;
-				            $scope.errorMessage = $scope.texts.errorMessages.notAvailableAmount[$scope.language];
+				            var patternError = $scope.amount.$error.pattern.length > 0;
+
+				            if (patternError) {
+				            	$scope.error = true;
+					            $scope.errorMessage = $scope.texts.errorMessages.amountIsNan[$scope.language];
+				            } else {
+					            $scope.error = true;
+					            $scope.errorMessage = $scope.texts.errorMessages.notAvailableAmount[$scope.language];
+				            }
 			            }
 		            } else {
 			            $scope.error = true;
