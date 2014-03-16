@@ -57,8 +57,8 @@ angular
 		            L10n.texts = texts;
 	            });
 
-	            $scope.selectAccount = function(acc) {
-		            $scope.accountSelected = acc;
+	            $scope.selectAccount = function(index) {
+		            $scope.accountSelected = $scope.knownDestinationAccounts[index];
 		            $scope.error = false;
 		            $scope.errorMessage = '';
 	            };

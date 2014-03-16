@@ -36,6 +36,11 @@ angular
 	            	}
 	            });
 	            
+	            $scope.selectAccount = function(index) {
+	            	console.log(index)
+	            	$scope.accountSelected = $scope.accounts[index];
+	            };
+	            
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
 		            L10n.texts = texts;

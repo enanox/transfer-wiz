@@ -19,8 +19,8 @@
 					<td></td>
 					<td data-ng-repeat="headers in texts.accountOverview.columns">{{headers[language]}}</td>
 				</tr>				
-				<tr class="accounts" data-ng-repeat="account in accounts">
-					<td><input type="radio" data-ng-model="accountSelected.number" id="accounts{{$index}}" name="number" value="{{account.number}}"></td>
+				<tr class="accounts" data-ng-repeat="account in accounts" data-ng-click="selectAccount($index)">
+					<td><input type="radio" id="accounts{{$index}}" data-ng-model="accountSelected.number" name="accounts" value="{{account.number}}"></td>
 					<td>{{account.number}}</td>
 					<td>{{account.type}}</td>
 					<td>{{account.currency}}</td>
