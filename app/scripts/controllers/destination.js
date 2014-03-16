@@ -126,7 +126,7 @@ angular
 			            // TODO Better security method for saving the selected account
 			            sessionStorage[newToken + '-origin'] = sessionStorage[oldToken
 			                + '-origin'];
-			            sessionStorage[newToken + '-destination'] = $scope.accountSelected;
+			            sessionStorage[newToken + '-destination'] = $scope.accountSelected.number;
 			            delete sessionStorage[oldToken+'-origin'];
 			            $location.path('/transfer/amount/' + newToken);
 		            } else {

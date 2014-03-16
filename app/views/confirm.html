@@ -1,1 +1,63 @@
-<p>This is the confirm view.</p>
+<header>
+	<div class="pull-right">
+		<button class="btn btn-default btn-xs">EN</button>
+		<button class="btn btn-default btn-xs active">ES</button>
+	</div>
+	<div><h1>{{texts.bankName[language]}}</h1></div>
+	<div><h2><small>{{texts.bankDescription[language]}}</small></h2></div>	
+</header>
+<article>
+	<section>
+		<aside><h3>{{texts.transfer.overview[language]}}</h3></aside>
+		<div class="alert alert-info">
+			<h4>{{texts.transfer.confirm[language]}}</h4>
+		</div>
+		<div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-5 control-label">{{texts.transfer.origin[language]}}:</label>
+				<div class="col-sm-7">
+					<p class="form-control-static">{{transfer.origin}}</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">{{texts.transfer.destination[language]}}:</label>
+				<div class="col-sm-7">
+					<p class="form-control-static">{{transfer.destination}}</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">{{texts.transfer.amountValue[language]}}:</label>
+				<div class="col-sm-7">
+					<p class="form-control-static">{{transfer.amount}}</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">{{texts.transfer.amountMail[language]}}:</label>
+				<div class="col-sm-7">
+					<p class="form-control-static">{{transfer.email}}</p>
+				</div>
+			</div>
+			<div class="form-group" data-ng-show="comments">
+				<label class="col-sm-5 control-label">{{texts.transfer.amountComments[language]}}:</label>
+				<div class="col-sm-7">
+					<p class="form-control-static">{{transfer.comments}}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">		
+			<div class="col-md-6 text-right">
+				<a class="btn btn-warning btn-sm" id="cancel" data-ng-href="#/transfer/amount/{{token}}">{{texts.controlPanelButtons.cancel[language]}}</a>
+			</div>
+			<div class="col-md-6 text-left">
+				<a class="btn btn-primary btn-sm" id="next" data-ng-click="processTransfer()">{{texts.controlPanelButtons.confirm[language]}}</a>
+			</div>
+		</div>
+	</section>
+</article>
+<footer>
+</footer>
+
+

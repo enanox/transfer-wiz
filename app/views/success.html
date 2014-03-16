@@ -1,1 +1,41 @@
-<p>This is the success view.</p>
+<header>
+	<div class="pull-right">
+		<button class="btn btn-default btn-xs">EN</button>
+		<button class="btn btn-default btn-xs active">ES</button>
+	</div>
+	<div>
+		<h1>{{texts.bankName[language]}}</h1>
+	</div>
+	<div>
+		<h2>
+			<small>{{texts.bankDescription[language]}}</small>
+		</h2>
+	</div>
+</header>
+<article>
+	<section>
+		<aside>
+			<h3>{{texts.transfer.overview[language]}}</h3>
+		</aside>
+		<div class="alert alert-success" data-ng-hide="error">
+			<h4>{{texts.transfer.success[language]}}</h4>
+		</div>
+		<div data-ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+		<div class="container" data-ng-hide="error">
+			<p>
+				{{ texts.successfulInfo.first[language]}}<span>{{transfer.amount | currency}}</span>{{texts.successfulInfo.second[language] }}<span>{{transfer.origin}}</span>.
+			</p>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<a class="btn btn-primary btn-sm" id="home"
+					data-ng-href="#/transfer">{{texts.controlPanelButtons.backToHome[language]}}</a>
+			</div>
+		</div>
+	</section>
+</article>
+<footer> </footer>
+
+

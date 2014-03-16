@@ -20,21 +20,31 @@
 		"cancel": {"en": "Cancel", "es": "Cancelar"},
 		"next": {"en": "Next", "es": "Siguiente"},
 		"confirm": {"en": "Confirm", "es": "Confirm"},
-		"add": {"en":"Add", "es": "Agregar"}
+		"add": {"en":"Add", "es": "Agregar"},
+		"backToHome": {"en": "Back to Home", "es": "Volver al inicio"}
 	},
 	"knownAccountsOverview": {
 		"title": { "en": "Accounts overview", "es": "Cuentas"},
 		"columns": [{ "en": "Number", "es": "Número"}, {"en": "Type", "es": "Tipo"}, {"en": "Currency", "es": "Moneda"}]		
 		},
 	"transfer": {
+		"overview": { "en": "Transfer", "es": "Transferencia"},
 		"selectAccount": {"en": "Select origin account", "es": "Seleccione cuenta de origen"},
 		"knownAccounts": {"en": "Select destination account (from recents)", "es": "Seleccione cuenta de destino (recientes)"},
 		"orNewAccount": {"en": "Or type other account", "es": "O escriba otra cuenta"},
 		"enterAmount": {"en": "Enter the amount to transfer", "es": "Ingrese el monto a transferir"},
 		"amountValue": {"en": "Amount", "es": "Monto"},
 		"amountMail": {"en": "e-mail (will receive confirmation)", "es": "e-Mail (recibirá confirmación)"},
-		"amountComments": {"en": "Comments", "es": "Comentarios"}
-	},
+		"amountComments": {"en": "Comments", "es": "Comentarios"},
+		"confirm": {"en":"Please ensure the data below are correct. Do you want to confirm the transfer?","es":"Por favor, verifique que los datos abajo son correctos. ¿Desea confirmar la transferencia?"},
+		"origin": {"en": "Origin account", "es": "Cuenta de origen"},
+		"destination": {"en": "Destination account", "es": "Cuenta de destino"},
+		"success": {"en": "Operation completed successfully!", "es": "¡Operación completada exitosamente!"}		
+		},
+	"successfulInfo": {
+		"first": { "en": "The indicated amount of ", "es": "El monto indicado de "},
+		"second": { "en": "will be debited from the account ", "es": "será debitado de la cuenta "}
+		}, 
 	"errorMessages": {
 		"selectAccount": {
 			"en": "You have to select an account before proceeding",
@@ -47,6 +57,14 @@
 		"mandatoryFields": {
 			"en": "Some fields marked with (*) have not been fulfilled",
 			"es": "Algunos campos marcados con (*) no han sido completados"
+		},
+		"notAvailableAmount": {
+			"en": "Amount not available in the account",
+			"es": "Monto no disponible en la cuenta"
+		},
+		"transferFailed": {
+			"en": "Error in transfer. Please go back later and try again.",
+			"es": "Error en la transferencia. Por favor vuelva más tarde e inténtelo de nuevo"
 		}
 	}
 }

@@ -39,18 +39,18 @@
 	}],
 	"knownDestinationAccounts": [{
 		"number": "0030 4411 123 4567890",
-		"type": "CC",
+		"type": "CA",
 		"currency": "UYU"
 	},{
 		"number": "0030 3300 123 4567890",
+		"type": "CA",
+		"currency": "UYU"
+	},{
+		"number": "0030 2299 12 34567890",
 		"type": "CC",
 		"currency": "UYU"
 	},{
-		"number": "0030 2299 123 4567890",
-		"type": "CC",
-		"currency": "UYU"
-	},{
-		"number": "0030 1188 123 4567890",
+		"number": "0030 1188 12 34567890",
 		"type": "CC",
 		"currency": "UYU"
 	}]
