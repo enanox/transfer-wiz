@@ -17,31 +17,31 @@
 			<div class="form-group">
 				<label class="col-sm-5 control-label">{{texts.transfer.origin[language]}}:</label>
 				<div class="col-sm-7">
-					<p class="form-control-static">{{transfer.origin}}</p>
+					<p class="form-control-static" id="originAccount">{{transfer.origin}}</p>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">{{texts.transfer.destination[language]}}:</label>
 				<div class="col-sm-7">
-					<p class="form-control-static">{{transfer.destination}}</p>
+					<p class="form-control-static" id="destinationAccount">{{transfer.destination}}</p>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">{{texts.transfer.amountValue[language]}}:</label>
 				<div class="col-sm-7">
-					<p class="form-control-static">{{transfer.amount | currency}}</p>
+					<p class="form-control-static" id="amount">{{transfer.amount | currency}}</p>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">{{texts.transfer.amountMail[language]}}:</label>
 				<div class="col-sm-7">
-					<p class="form-control-static">{{transfer.email}}</p>
+					<p class="form-control-static" id="email">{{transfer.email}}</p>
 				</div>
 			</div>
 			<div class="form-group" data-ng-show="comments">
 				<label class="col-sm-5 control-label">{{texts.transfer.amountComments[language]}}:</label>
 				<div class="col-sm-7">
-					<p class="form-control-static">{{transfer.comments}}</p>
+					<p class="form-control-static" id="comments">{{transfer.comments}}</p>
 				</div>
 			</div>
 		</div>

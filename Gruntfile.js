@@ -324,7 +324,7 @@ module.exports = function (grunt) {
       e2e: {
         configFile: 'karma-e2e.conf.js',
         singleRun: false,
-        proxies: { '/': 'http://localhost:8081/' }
+        proxies: { '/': 'http://localhost:8080/' }
       }
     }
   });

@@ -101,7 +101,6 @@ describe("TransferWiz App", function() {
 		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/origin');
-			console.log('STEP 1');			
 		});
 				
 		it('should have selectable accounts to start the transfer', function() {
@@ -111,32 +110,26 @@ describe("TransferWiz App", function() {
 		});
 		
 		it('should navigate to Step 2 page after clicking on "Next" button', function() {
-			input('accountSelected.number').enter('0021 1122 1122334455');
-
+			element('#accounts0').click();
+			sleep(1);
 			element('#next').click();
-			
-			setTimeout(function() {
-				
-			
-			var token = '', accountVal = '', key = '';
+			sleep(5);
+
+			var token = '';
 			
 			for(var i = sessionStorage.length; i > 0 ; i--) {
 				if(sessionStorage[sessionStorage.key(i)] !== undefined && sessionStorage[sessionStorage.key(i)] !== 'undefined')  {
 					var lk = sessionStorage.key(i).split('-');
-
+					
 					if(lk[lk.length - 1] == 'origin')  {
 						token = lk[0]+'-'+lk[1];
-						key = lk.join('-');
-						accountVal = sessionStorage[sessionStorage.key(i)];
 					} 
 				}
 			}
 			
-			browser().navigateTo('#/transfer/destination/'+token);
-
-			expect({value: accountVal}).toEqual('0021 1122 1122334455');
+			expect(input('accountSelected.number').val()).toEqual('0030 4411 123 4567890');
 			expect(browser().location().path()).toBe('/transfer/destination/'+token);
-			}, 1200);
+			
 		});
 		
 		it('should go back to /transfer when clicking on cancel button', function() {
@@ -152,8 +145,7 @@ describe("TransferWiz App", function() {
 		var token = '';
 		
 		beforeEach(function() {
-			var originAccount = sessionStorage.key(sessionStorage.length - 1);
-			token = originAccount.split('-')[0]+'-'+originAccount.split('-')[1];
+			token = 'tw-key'+(new Date().getTime());
 			
 			browser().navigateTo('#/transfer/destination/'+token);
 		});
@@ -163,82 +155,95 @@ describe("TransferWiz App", function() {
 		});
 		
 		it('should navigate to Step 3 page after clicking on "Next" button', function() {
+			element('#accounts0').click();
+			sleep(1);
 			element('#next').click();
+			sleep(5);
 			
-			expect(browser().location().path()).toBe('/transfer/amount/'+token);
+			var lastKeys = sessionStorage.key(sessionStorage.length - 1).split('-');
+			var lastToken = lastKeys[0]+'-'+lastKeys[1];
+			console.log(lastKeys, lastToken)
+			sleep(5);
+			expect(browser().location().path()).toBe('/transfer/amount/'+lastToken);
 		});
 	});
 	
 	describe("Transfer Step 3", function() {
-		var step3Token = 'tw-key'+(new Date().getTime());
+		var step3Token = 'twkey-'+(new Date().getTime());
 		
 		beforeEach(function() {
+			console.log(sessionStorage.length, sessionStorage.getItem(sessionStorage.key(sessionStorage.length - 1)))
 			browser().navigateTo('#/transfer/amount/'+step3Token);
 		});
 		
 		it('should enter amount for the transfer', function()  {
-			var amountEntered = binding('amount.value');
-			
 			input('amount.value').enter('1500.00');
-			expect(amountEntered).toBe('1500.00');
+			expect(input('amount.value').val()).toBe('1500.00');
 		});
 		
 		it('should enter e-mail for the transfer', function()  {
-			var amountEntered = binding('amount.email');
-			
-			input('amount.value').enter('some@local');
-			expect(amountEntered).toBe('some@local');
+			input('amount.email').enter('some@local');
+			expect(input('amount.email').val()).toBe('some@local');
 		});
 		
 		it('should navigate to Step 4 page after clicking on "Next" button', function() {
 			input('amount.value').enter('1500.00');
+			expect(input('amount.value').val()).toBe('1500.00');
+			
 			input('amount.email').enter('some@local');
+			expect(input('amount.email').val()).toBe('some@local');
 			
 			element('#next').click();
-			expect(browser().location().path()).toBe('/transfer/confirm/'+step3Token);
+			sleep(5);
+
+			var lastKeys = sessionStorage.key(sessionStorage.length - 1).split('-');
+			var lastToken = lastKeys[0]+'-'+lastKeys[1];
+			pause();
+			expect(browser().location().path()).toBe('/transfer/confirm/'+lastToken);
 		});
 		
 	});
 	
 	describe("Transfer Step 4", function() {
-		var token = 'tw-key'+(new Date().getTime());
+		var token = 'twkey-'+(new Date().getTime());
 		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/confirm/'+token);
 		});
 		
 		it('should display accounts information and amount', function() {
-			var originAccount = element('#account-origin');
-			var destinationAccount = element('#account-destination');
-			var amountTransfer = element('#transfer-amount');
+			var originAccount = element('#originAccount');
+			var destinationAccount = element('#destinationAccount');
+			var amountTransfer = element('#amount');
+			var email = element('#email');
+			var comments = element('#comments');
 			
 			expect(originAccount.text()).toBe('0021 1124 1122334455');
 			expect(destinationAccount.text()).toBe('0021 1124 6677889900');
 			expect(amountTransfer.text()).toBe('1500.00');
+			expect(email.text()).toBe('some@local');
+			expect(comments.text()).toBe('Comments');
 		});
 		
 		it('should navigate to Step 5 page after clicking on "Next" button', function() {
 			element('#next').click(); 
-			
+			pause();
 			expect(browser().location().path()).toBe('/transfer/success/'+token);
 		});
 	});
 		
 	describe("Transfer Step 5", function() {
-		var token = 'tw-key'+(new Date().getTime());
+		var token = 'twkey-'+(new Date().getTime());
 		
 		beforeEach(function() {
 			browser().navigateTo('#/transfer/success/'+token);
 		});
 		
-		it('should display accounts information and amount', function() {
-			var originAccount = element('#account-origin');
-			var destinationAccount = element('#account-destination');
-			var amountTransfer = element('#transfer-amount');
+		it('should navigate to /transfer page when clicking button "Home"', function() {
 			
-			expect(originAccount.text()).toBe('0021 1124 1122334455');
-			expect(destinationAccount.text()).toBe('0021 1124 6677889900');
-			expect(amountTransfer.text()).toBe('1500.00');
+			element('#home').click();
+			
+			expect(browser().location().path()).toBe('/transfer');
 		});
 		
 	});
@@ -256,19 +261,41 @@ describe("TransferWiz App", function() {
 		});
 		
 		it('should pick an account and navigate to Step 2', function() {
-			element('#accounts0').click();
-			element("#next").click();
+			element('#accounts0').click();			
+			sleep(1);
+			console.log(input('accountSelected.number').val(), 'value?')
+			element("#next").click();			
+			sleep(5);
+
+			var token = '';
 			
-			var originAccountSaved = sessionStorage.key(sessionStorage.length - 1);
-			var token = originAccountSaved.split('-')[1];
-			var originAccount = sessionStorage.getItem(originAccountSaved);
+			for(var i = sessionStorage.length; i > 0 ; i--) {
+				if(sessionStorage[sessionStorage.key(i)] !== undefined && sessionStorage[sessionStorage.key(i)] !== 'undefined')  {
+					var lk = sessionStorage.key(i).split('-');
+
+					if(lk[lk.length - 1] == 'origin')  {
+						token = lk[0]+'-'+lk[1];
+					} 
+				}
+			}
 			
-			expect(originAccount).toBe('0021 1122 1122334455');
+			console.log('origin account',originAccount, token)
+			pause();
+			expect(input('accountSelected.number').val()).toBe('0030 4411 123 4567890');
 			expect(browser().location().path()).toBe('/transfer/destination/'+token);
 		});
 		
 		it('should pick a destination account and navigate to Step 3', function() {
-			
+			element('#accounts0').click();
+			element("#next").click();
+			sleep(5);
+			var destinationAccountSaved = sessionStorage.key(sessionStorage.length - 1);
+			var token = 'twkey-' + destinationAccountSaved.split('-')[1];
+			var destinationAccount = sessionStorage.getItem(destinationAccountSaved + '-destination');
+			console.log('destination account',destinationAccount)
+			pause();
+			expect({value: destinationAccount}).toBe('0030 4411 123 4567890');
+			expect(browser().location().path()).toBe('/transfer/destination/'+token);
 		});
 		
 		it('should enter amount value, mail and comments and navigate to Step 4', function() {

@@ -19,7 +19,7 @@
 		"back": {"en": "Back", "es": "Volver"},
 		"cancel": {"en": "Cancel", "es": "Cancelar"},
 		"next": {"en": "Next", "es": "Siguiente"},
-		"confirm": {"en": "Confirm", "es": "Confirm"},
+		"confirm": {"en": "Confirm", "es": "Confirmar"},
 		"add": {"en":"Add", "es": "Agregar"},
 		"backToHome": {"en": "Back to Home", "es": "Volver al inicio"}
 	},

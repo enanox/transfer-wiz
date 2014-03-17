@@ -81,11 +81,14 @@ angular
 
 	            $scope.isAvailableAmount = function(number) {
 		            var available = false;
-
+		            
 		            for ( var i = 0; i < $scope.accounts.length; i++) {
 			            if ($scope.accounts[i].number === number
 			                && $scope.accounts[i].available - $scope.amount.value > 0) {
+			            	console.log($scope.accounts[i])
 				            available = true;
+			            } else {
+			            	console.log('NOT')
 			            }
 		            }
 
