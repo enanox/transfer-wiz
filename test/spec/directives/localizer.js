@@ -12,9 +12,9 @@ describe('Directive: localizer', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
+  it('should have two children elements', inject(function ($compile) {
     element = angular.element('<div localizer></div>');
     element = $compile(element)(scope);
-    expect(element.children().count()).toBe(2);
+    expect(element.children().length).toBe(2);
   }));
 });
