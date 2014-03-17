@@ -3,8 +3,8 @@
 angular.module('transferWizApp').service(
     'L10n',
     [
-        '$http',
-        function($http) {
+        '$http', '$rootScope',
+        function($http, $rootScope) {
 	        // AngularJS will instantiate a singleton by calling "new" on this
 					// function
 	        
@@ -19,7 +19,7 @@ angular.module('transferWizApp').service(
 	        
 	        this.setLanguage = function(newLang) {
 		        this.language = newLang.toLowerCase();
-		        $emit('languageChange',this.language);
+		        $rootScope.$broadcast('languageChange',this.language);
 	        };
 	        
 	        this.getLanguage = function() {
@@ -37,6 +37,5 @@ angular.module('transferWizApp').service(
 	        this.setTexts = function(texts)  {
 	        	this.texts = texts;
 	        };
-	        
 	        
         } ]);

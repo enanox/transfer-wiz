@@ -11,22 +11,19 @@ angular
             '$location',
             'account',
             function($scope, L10n, $routeParams, $location, account) {
-	            $scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS',
-	                'Karma' ];
 
 	            $scope.token = $routeParams.token;
-	            $scope.language = L10n.getLanguage();
+	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 	            $scope.validAmountRegexp = /^\d+((\.|\,)\d+)?$/;
 
 	            account.getData().then(function(response) {
 		            $scope.accounts = response.data.accounts;
 	            });
 
-	            // TODO change language directive
-	            $scope.$watch('language', function() {
-	            });
+	            $scope.localize = L10n.setLanguage;
+
 	            $scope.$on('languageChange', function(a) {
-		            console.log('change!', a);
+		            sessionStorage.setItem('tw-lang', $scope.language);
 	            });
 
 	            L10n.loadTexts().success(function(texts) {
@@ -62,7 +59,7 @@ angular
 				            var patternError = $scope.amount.$error.pattern.length > 0;
 
 				            if (patternError) {
-				            	$scope.error = true;
+					            $scope.error = true;
 					            $scope.errorMessage = $scope.texts.errorMessages.amountIsNan[$scope.language];
 				            } else {
 					            $scope.error = true;
@@ -81,14 +78,11 @@ angular
 
 	            $scope.isAvailableAmount = function(number) {
 		            var available = false;
-		            
+
 		            for ( var i = 0; i < $scope.accounts.length; i++) {
 			            if ($scope.accounts[i].number === number
 			                && $scope.accounts[i].available - $scope.amount.value > 0) {
-			            	console.log($scope.accounts[i])
 				            available = true;
-			            } else {
-			            	console.log('NOT')
 			            }
 		            }
 

@@ -4,17 +4,15 @@ angular.module('transferWizApp').controller(
     'ConfirmCtrl',
     [ '$scope', 'L10n', '$routeParams', '$location',
         function($scope, L10n, $routeParams, $location) {
-	        $scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma' ];
 	        
 	        $scope.token = $routeParams.token;
-          $scope.language = L10n.getLanguage();
+          $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
-          // TODO change language directive
-          $scope.$watch('language', function() {
-          });
-          $scope.$on('languageChange', function(a) {
-            console.log('change!', a);
-          });
+          $scope.localize = L10n.setLanguage;
+    	    
+    	    $scope.$on('languageChange', function(a) {
+    		    sessionStorage.setItem('tw-lang', $scope.language);
+    	    });
 
           L10n.loadTexts().success(function(texts) {
             $scope.texts = texts;

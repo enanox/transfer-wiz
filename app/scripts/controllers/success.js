@@ -10,19 +10,15 @@ angular
             '$routeParams',
             '$location',
             function($scope, L10n, $routeParams, $location) {
-	            $scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS',
-	                'Karma' ];
 
 	            $scope.token = $routeParams.token;
-	            $scope.language = L10n.getLanguage();
-
-	            // TODO change language directive
-	            $scope.$watch('language', function() {
-	            });
-	            $scope.$on('languageChange', function(a) {
-		            console.log('change!', a);
-	            });
-
+	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
+	            $scope.localize = L10n.setLanguage;
+	      	    
+	      	    $scope.$on('languageChange', function(a) {
+	      		    sessionStorage.setItem('tw-lang', $scope.language);
+	      	    });
+	      	    
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
 		            L10n.texts = texts;
@@ -39,11 +35,9 @@ angular
 		            transfer.email = sessionStorage[token + '-email'];
 		            transfer.comments = sessionStorage[token + '-comments'];
 
-		            if (transfer.origin && transfer.destination && transfer.amount
-		                && transfer.email) {
+		            if (transfer.origin && transfer.destination && transfer.amount && transfer.email) {
 			            $scope.transfer = transfer;
-			            $scope.deleteSessionData();
-			            
+			            $scope.deleteSessionData();			            
 		            } else {
 			            $scope.error = true;
 			            $scope.errorMessage = $scope.texts.errorMessages.transferFailed[$scope.language];

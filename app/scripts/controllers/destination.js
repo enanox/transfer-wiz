@@ -11,9 +11,8 @@ angular
             '$routeParams',
             '$location',
             function($scope, L10n, account, $routeParams, $location) {
-	            $scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS',
-	                'Karma' ];
-	            $scope.types = [ {
+	            
+            	$scope.types = [ {
 		            length : 4
 	            }, {
 		            length : 4
@@ -34,7 +33,7 @@ angular
 	            } ];
 
 	            $scope.token = $routeParams.token;
-	            $scope.language = L10n.getLanguage();
+	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
 	            account
 	                .getData()
@@ -44,13 +43,11 @@ angular
 		                    $scope.knownDestinationAccounts = response.data.knownDestinationAccounts;
 	                    });
 
-	            // TODO change language directive
-	            $scope.$watch('language', function() {
-		            console.log($scope.language, L10n.language);
-	            });
-	            $scope.$on('languageChange', function(a) {
-		            console.log('change!', a)
-	            });
+	            $scope.localize = L10n.setLanguage;
+	      	    
+	      	    $scope.$on('languageChange', function(a) {
+	      		    sessionStorage.setItem('tw-lang', $scope.language);
+	      	    });
 
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
