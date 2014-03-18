@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('transferWizApp').controller('TransferCtrl',
-    [ '$scope', 'L10n', 'account', function($scope, L10n, account) {
+    [ '$scope', 'L10n', 'Account', function($scope, L10n, Account) {
 
 	    $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
-	    account.getData().then(function(response) {
+	    Account.getData().then(function(response) {
 		    $scope.accounts = response.data.accounts;
 		    $scope.creditCards = response.data.creditCards;
 		    $scope.userData = response.data.user;

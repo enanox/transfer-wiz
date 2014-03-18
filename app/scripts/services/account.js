@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('transferWizApp')
-  .provider('account', function () {
+  .provider('Account', function () {
 
     // Private variables
     var salutation = 'Hello';
@@ -11,7 +11,7 @@ angular.module('transferWizApp')
     var db = {};
 
     // Private constructor
-    function account(provider) {    	
+    function Account(provider) {    	
     	this.httpProvider = provider;
       this.confirm = function () {
         return salutation;
@@ -31,9 +31,7 @@ angular.module('transferWizApp')
       	this.getData().success(function(data) {
         	accounts = data.accounts;
         	return accounts;
-      	});/*
-      	console.log('afuer',accounts)
-      	return accounts;*/
+      	});
       };
     }
      
@@ -42,6 +40,6 @@ angular.module('transferWizApp')
     }
     // Method for instantiating
     this.$get = ['$http', function ($http) {
-      return new account($http);      
+      return new Account($http);      
     }];
   });

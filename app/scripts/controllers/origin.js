@@ -7,14 +7,14 @@ angular
         [
             '$scope',
             'L10n',
-            'account',
+            'Account',
             '$location',
             '$rootScope',
-            function($scope, L10n, account, $location, $rootScope) {
+            function($scope, L10n, Account, $location, $rootScope) {
 
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
-	            account.getData().then(function(response) {
+	            Account.getData().then(function(response) {
 		            $scope.accounts = response.data.accounts;
 	            });
 

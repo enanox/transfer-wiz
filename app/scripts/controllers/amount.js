@@ -9,14 +9,14 @@ angular
             'L10n',
             '$routeParams',
             '$location',
-            'account',
-            function($scope, L10n, $routeParams, $location, account) {
+            'Account',
+            function($scope, L10n, $routeParams, $location, Account) {
 
 	            $scope.token = $routeParams.token;
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 	            $scope.validAmountRegexp = /^\d+((\.|\,)\d+)?$/;
 
-	            account.getData().then(function(response) {
+	            Account.getData().then(function(response) {
 		            $scope.accounts = response.data.accounts;
 	            });
 

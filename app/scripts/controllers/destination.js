@@ -7,12 +7,12 @@ angular
         [
             '$scope',
             'L10n',
-            'account',
+            'Account',
             '$routeParams',
             '$location',
-            function($scope, L10n, account, $routeParams, $location) {
-	            
-            	$scope.types = [ {
+            function($scope, L10n, Account, $routeParams, $location) {
+
+	            $scope.types = [ {
 		            length : 4
 	            }, {
 		            length : 4
@@ -35,7 +35,7 @@ angular
 	            $scope.token = $routeParams.token;
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
-	            account
+	            Account
 	                .getData()
 	                .then(
 	                    function(response) {
@@ -44,10 +44,10 @@ angular
 	                    });
 
 	            $scope.localize = L10n.setLanguage;
-	      	    
-	      	    $scope.$on('languageChange', function(a) {
-	      		    sessionStorage.setItem('tw-lang', $scope.language);
-	      	    });
+
+	            $scope.$on('languageChange', function(a) {
+		            sessionStorage.setItem('tw-lang', $scope.language);
+	            });
 
 	            L10n.loadTexts().success(function(texts) {
 		            $scope.texts = texts;
@@ -61,7 +61,7 @@ angular
 	            };
 
 	            $scope.addAccount = function(newAccountFromModel) {
-	            	if ($scope.newAccount.hasOwnProperty('number')
+		            if ($scope.newAccount.hasOwnProperty('number')
 		                && $scope.newAccount.number !== '') {
 			            var accNumber = $scope.newAccount.number;
 
@@ -124,7 +124,7 @@ angular
 			            sessionStorage[newToken + '-origin'] = sessionStorage[oldToken
 			                + '-origin'];
 			            sessionStorage[newToken + '-destination'] = $scope.accountSelected.number;
-			            delete sessionStorage[oldToken+'-origin'];
+			            delete sessionStorage[oldToken + '-origin'];
 			            $location.path('/transfer/amount/' + newToken);
 		            } else {
 			            $scope.error = true;
