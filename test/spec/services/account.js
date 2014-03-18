@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: account', function () {
+describe('Service: Account', function() {
 
-  // load the service's module
-  beforeEach(module('transferWizApp'));
+	// load the service's module
+	beforeEach(module('transferWizApp'));
 
-  // instantiate service
-  var account;
-  beforeEach(inject(function (_account_) {
-    account = _account_;
-  }));
+	// instantiate service
+	var Account;
+	beforeEach(inject(function(_Account_) {
+		Account = _Account_;
+	}));
 
-  it('should do something', function () {
-    expect(!!account).toBe(true);
-  });
+	it('should do something', function() {
+		expect(!!Account).toBe(true);
+	});
 
 });
