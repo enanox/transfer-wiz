@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: TransferCtrl', function () {
+describe('Controller: StartCtrl', function () {
 
   // load the controller's module
   beforeEach(module('transferWizApp'));
 
-  var TransferCtrl,
+  var StartCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    TransferCtrl = $controller('TransferCtrl', {
+    StartCtrl = $controller('StartCtrl', {
       $scope: scope
     });
   }));

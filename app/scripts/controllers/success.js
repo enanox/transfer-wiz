@@ -6,12 +6,13 @@ angular
         'SuccessCtrl',
         [
             '$scope',
+            '$state',
             'L10n',
-            '$routeParams',
+            '$stateParams',
             '$location',
-            function($scope, L10n, $routeParams, $location) {
+            function($scope, $state, L10n, $stateParams, $location) {
 
-	            $scope.token = $routeParams.token;
+	            $scope.token = $stateParams.token;
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 	            $scope.localize = L10n.setLanguage;
 
@@ -50,6 +51,9 @@ angular
 	            	var currentLang = $scope.language;
 		            sessionStorage.clear();
 		            L10n.setLanguage(currentLang);
-	            };
-
+	            };  
+                        
+                $scope.isSuccess = function () {
+                    return $state.$current.name == 'start.transfer.success';
+                };
             } ]);

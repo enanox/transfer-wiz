@@ -350,6 +350,14 @@ module.exports = function (grunt) {
     grunt.task.run(['serve']);
   });
 
+  grunt.registerTask('test', [
+                              'clean:server',
+                              'concurrent:test',
+                              'autoprefixer',
+                              //'connect:test',
+                              'karma:unit'
+                            ]);
+  
   grunt.registerTask('test:e2e', [
     'clean:server',
     'concurrent:test',
@@ -358,14 +366,6 @@ module.exports = function (grunt) {
     'karma:e2e'
   ]);
   
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma:unit'
-  ]);
-
   grunt.registerTask('build', [
     'clean:dist',
     'bower-install',

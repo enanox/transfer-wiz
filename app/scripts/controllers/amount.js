@@ -6,13 +6,14 @@ angular
         'AmountCtrl',
         [
             '$scope',
+            '$state',
             'L10n',
-            '$routeParams',
+            '$stateParams',
             '$location',
             'Account',
-            function($scope, L10n, $routeParams, $location, Account) {
+            function($scope, $state, L10n, $stateParams, $location, Account) {
 
-	            $scope.token = $routeParams.token;
+	            $scope.token = $stateParams.token;
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 	            $scope.validAmountRegexp = /^\d+((\.|\,)\d+)?$/;
 
@@ -34,8 +35,7 @@ angular
 	            $scope.confirmTransfer = function() {
 		            if ($scope.amount) {
 			            var oldToken = $scope.token;
-			            var timestamp = new Date().getTime();
-			            var newToken = 'twkey-' + timestamp;
+			            var newToken = oldToken;
 			            var originAccount = sessionStorage[oldToken + '-origin'];
 
 			            // Check available amount against account selected
@@ -46,15 +46,12 @@ angular
 				                + '-origin'];
 				            sessionStorage[newToken + '-destination'] = sessionStorage[oldToken
 				                + '-destination'];
-
-				            delete sessionStorage[oldToken + '-origin'];
-				            delete sessionStorage[oldToken + '-destination'];
-
+				            
 				            sessionStorage[newToken + '-amount'] = $scope.amount.value;
 				            sessionStorage[newToken + '-email'] = $scope.amount.email;
 				            sessionStorage[newToken + '-comments'] = $scope.amount.comments;
 
-				            $location.path('/transfer/confirm/' + newToken);
+                            $state.go('start.transfer.confirm', {token: newToken});
 			            } else {
 				            var patternError = $scope.amount.$error.pattern.length > 0;
 
@@ -73,7 +70,7 @@ angular
 	            };
 
 	            $scope.cancelAmount = function() {
-		            $location.path('/transfer/destination/' + $scope.token);
+                    $state.go('start.transfer.destination', {token: $scope.token});
 	            };
 
 	            $scope.isAvailableAmount = function(number) {
@@ -88,5 +85,7 @@ angular
 
 		            return available;
 	            };
-
+                $scope.isAmount = function () {
+                    return $state.$current.name == 'start.transfer.amount';
+                };
             } ]);

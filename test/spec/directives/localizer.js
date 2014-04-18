@@ -1,20 +1,29 @@
 'use strict';
 
 describe('Directive: localizer', function () {
+  var element, scope;
+  var $httpBackend, $rootScope, $compile;
 
-  // load the directive's module
-  beforeEach(module('transferWizApp'));
-
-  var element,
-    scope;
-
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
-
-  it('should have two children elements', inject(function ($compile) {
+  beforeEach(function () {    
+    module('transferWizApp');
+    module('appPartials');
+  });
+  
+  beforeEach(inject(function ($injector, _$compile_) {    
+    $httpBackend = $injector.get('$httpBackend');
+    $rootScope = $injector.get('$rootScope');
+    $compile = _$compile_;
+            
+    $httpBackend.expectGET('partials/localizer.html').respond(200);
+    
+    scope = $rootScope;
     element = angular.element('<div localizer></div>');
-    element = $compile(element)(scope);
-    expect(element.children().length).toBe(2);
+    $compile(element)(scope);
+    
+    scope.$digest();
   }));
+
+  it('should have two children elements', function () {
+    expect(element.children().length).toBe(2);
+  });
 });

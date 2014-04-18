@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('transferWizApp').controller('TransferCtrl',
-    [ '$scope', 'L10n', 'Account', function($scope, L10n, Account) {
+angular.module('transferWizApp').controller('StartCtrl',
+    [ '$scope', '$state', 'L10n', 'Account', function($scope, $state, L10n, Account) {
 
 	    $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
@@ -21,5 +21,8 @@ angular.module('transferWizApp').controller('TransferCtrl',
 		    $scope.texts = texts;
 		    L10n.texts = texts;
 	    });
-
+        
+        $scope.isHome = function () {
+         return $state.$current.name == 'start';
+       };
     } ]);

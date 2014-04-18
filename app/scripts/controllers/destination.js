@@ -6,11 +6,12 @@ angular
         'DestinationCtrl',
         [
             '$scope',
+            '$state',
             'L10n',
             'Account',
-            '$routeParams',
+            '$stateParams',
             '$location',
-            function($scope, L10n, Account, $routeParams, $location) {
+            function($scope, $state, L10n, Account, $stateParams, $location) {
 
 	            $scope.types = [ {
 		            length : 4
@@ -32,7 +33,7 @@ angular
 	              }
 	            } ];
 
-	            $scope.token = $routeParams.token;
+	            $scope.token = $stateParams.token;
 	            $scope.language = sessionStorage['tw-lang'] || L10n.getLanguage();
 
 	            Account
@@ -117,18 +118,20 @@ angular
 	            $scope.enterAmount = function() {
 		            if ($scope.accountSelected) {
 			            var oldToken = $scope.token;
-			            var timestamp = new Date().getTime();
-			            var newToken = 'twkey-' + timestamp;
+			            var newToken = oldToken;
 
 			            // TODO Better security method for saving the selected account
 			            sessionStorage[newToken + '-origin'] = sessionStorage[oldToken
 			                + '-origin'];
 			            sessionStorage[newToken + '-destination'] = $scope.accountSelected.number;
-			            delete sessionStorage[oldToken + '-origin'];
-			            $location.path('/transfer/amount/' + newToken);
+			            $state.go('start.transfer.amount', {token: newToken});
 		            } else {
 			            $scope.error = true;
 			            $scope.errorMessage = $scope.texts.errorMessages.selectAccount[$scope.language];
 		            }
 	            };
+                
+                $scope.isDestination = function () {
+                    return $state.$current.name == 'start.transfer.destination';
+                };
             } ]);
