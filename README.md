@@ -1,6 +1,6 @@
 transfer-wiz
 ============
-[![Build Status](https://travis-ci.org/enanox/transfer-wiz.png)](https://travis-ci.org/enanox/transfer-wiz)
+[![Build Status](https://travis-ci.org/enanox/transfer-wiz.png)](https://travis-ci.org/enanox/transfer-wiz) [![TypeScript definitions on DefinitelyTyped](http://definitelytyped.org/badges/standard.svg)](http://definitelytyped.org)
 
 Dummy bank account transfer wizard, with few simple steps and styles. This project was meant to be used as a PoC of AngularJS, HTML5 Storage and E2E testing.
 
