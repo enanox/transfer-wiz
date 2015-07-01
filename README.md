@@ -2,22 +2,16 @@ transfer-wiz
 ============
 [![Build Status](https://travis-ci.org/enanox/transfer-wiz.png)](https://travis-ci.org/enanox/transfer-wiz) [![TypeScript definitions on DefinitelyTyped](http://definitelytyped.org/badges/standard.svg)](http://definitelytyped.org)
 
-Dummy bank account transfer wizard, with few simple steps and styles. This project was meant to be used as a PoC of AngularJS, HTML5 Storage and E2E testing.
+Dummy bank account transfer wizard, with few simple steps and styles. This project was meant to be used as a PoC of [AngularJS](http://angularjs.org), [Web Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) and [E2E testing](https://docs.angularjs.org/guide/e2e-testing).
 
-Uses sessionStorage to maintain session token and data through the pages, and uses data sources from static JSON files (accounts and texts). 
-
-### TODO's ###
- 
-* Maintain session against back-end database.
-* Retrieve / save account data from firebase.io or another similar service
-* Remove token from routes
+Uses sessionStorage to maintain session token and data through the pages, and uses data sources from static JSON files (accounts and texts) or from [Firebase](http://firebase.io). 
 
 ### Deploy development version ###
 
-* Install `npm`
-* Install dependencies `npm install` (use `sudo` if you are running a *nix OS)
-* Install Grunt CLI `npm install grunt-cli -g`
-* Install Grunt `npm install grunt -g`
-* Install Bower `npm install bower -g`
-* `bower install`
-* Run with `grunt serve`
+* Recommended: installing globally `Bower` and `Grunt`: `npm install bower grunt grunt-cli -g`
+* Run `npm install && bower install`
+* Start the server with `grunt serve`
+
+### License ###
+
+This project is licensed under the MIT license.
